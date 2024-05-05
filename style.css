@@ -1,3 +1,8 @@
+*{
+    margin: 1px;
+    padding: 1px;
+}
+
 body {
     font-family: Arial, Helvetica, sans-serif;
     margin: 20px;
@@ -15,23 +20,30 @@ table {
 }
 
 th, td {
-    border: 1px solid #ddd;
+    border: 1px solid #ddddddd1;
     padding: 10px;
     text-align: left; 
 }
 
 th {
-    background-color: #f0f0f0; /* Light gray background for headers */
+    background-color: #f0f0f089; /* Light gray background for headers */
 }
 
 /* Optional: Striped table rows */
 tr:nth-child(even) {
-    background-color: #f8f8f8;
+    background-color: #f8f8f8e4;
 }
 
 /* Styling for the filter area */
 #filters {
     margin-bottom: 15px;
+    width: 50%;
+    padding: 5px;
+    margin: auto;
+    padding: auto;
+    flex: auto;
+    
+
 }
 
 #filters label {
