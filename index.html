@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSV Data Filter</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>User Data</h1>
+    <div id="filters">
+        <label for="age">Age:</label>
+        <select id="age">
+            <option value="all">All</option>
+        </select>
+        <label for="gender">Gender:</label>
+        <select id="gender">
+            <option value="all">All</option>
+        </select>
+    </div>
+    <div id="user-data">
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Gender</th>
+                    <th>Location</th>
+                </tr>
+            </thead>
+            <tbody id="user-table"></tbody>
+        </table>
+    </div>
+
+    <script>
+        const userData = [
+  {
+    "Age": 30,
+    "Gender": "male",
+    "Name": "Emily",
+    "Location": "mumbai"
+  },
+  {
+    "Age": 32,
+    "Gender": "female",
+    "Name": "Noah",
+    "Location": "Virar"
+  },
+  {
+    "Age": 32,
+    "Gender": "female",
+    "Name": "Isabella",
+    "Location": "Borivali"
+  },
+  {
+    "Age": 34,
+    "Gender": "male",
+    "Name": "Aiden",
+    "Location": "Gujrat"
+  },
+  {
+    "Age": 34,
+    "Gender": "female",
+    "Name": "Olivia",
+    "Location": "mumbai"
+  },
+  {
+    "Age": 40,
+    "Gender": "female",
+    "Name": "Lucas",
+    "Location": "Virar"
+  },
+  {
+    "Age": 42,
+    "Gender": "male",
+    "Name": "Evelyn",
+    "Location": "Borivali"
+  },
+  {
+    "Age": 44,
+    "Gender": "female",
+    "Name": "Oliver",
+    "Location": "Gujrat"
+  },
+  {
+    "Age": 46,
+    "Gender": "female",
+    "Name": "Harper",
+    "Location": "mumbai"
+  },
+  {
+    "Age": 48,
+    "Gender": "male",
+    "Name": "Elijah",
+    "Location": "Virar"
+  }
+]
+; 
+
+        const userTable = document.getElementById('user-table');
+        const filters = {
+            age: document.getElementById('age'),
+            gender: document.getElementById('gender')
+        };
+
+        function populateUserTable(users) {
+            userTable.innerHTML = ''; 
+
+            users.forEach(user => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${user.Name}</td>
+                    <td>${user.Age}</td>
+                    <td>${user.Gender}</td>
+                    <td>${user.Location}</td>
+                `;
+                userTable.appendChild(row);
+            });
+        }
+
+        function createFilterOptions() {
+            const uniqueAges = [...new Set(userData.map(user => user.Age))];
+            const uniqueGenders = [...new Set(userData.map(user => user.Gender))];
+
+            filters.age.innerHTML = '<option value="all">All</option>';
+            uniqueAges.forEach(age => {
+                filters.age.innerHTML += `<option value="${age}">${age}</option>`;
+            });
+
+            filters.gender.innerHTML = '<option value="all">All</option>';
+            uniqueGenders.forEach(gender => {
+                filters.gender.innerHTML += `<option value="${gender}">${gender}</option>`;
+            });
+        }
+
+        function applyFilters() {
+            const filteredUsers = userData.filter(user => {
+                return (filters.age.value === 'all' || user.Age == filters.age.value) && 
+                       (filters.gender.value === 'all' || user.Gender == filters.gender.value); 
+            });
+            populateUserTable(filteredUsers);
+        }
+
+        // Event listeners to trigger filtering
+        filters.age.addEventListener('change', applyFilters);
+        filters.gender.addEventListener('change', applyFilters);
+
+        // Initial setup
+        createFilterOptions();
+        populateUserTable(userData); 
+    </script>
+</body>
+</html>
