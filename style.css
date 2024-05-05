@@ -41,8 +41,7 @@ tr:nth-child(even) {
     padding: 5px;
     margin: auto;
     padding: auto;
-    flex: auto;
-    
+    flex: auto; 
 
 }
 
