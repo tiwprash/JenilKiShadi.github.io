@@ -17,6 +17,10 @@
         <select id="gender">
             <option value="all">All</option>
         </select>
+        <label for="location">Location:</label>
+        <select id="location">
+          <option value="all">All</option>
+      </select>
     </div>
     <div id="user-data">
         <table>
@@ -100,7 +104,8 @@
         const userTable = document.getElementById('user-table');
         const filters = {
             age: document.getElementById('age'),
-            gender: document.getElementById('gender')
+            gender: document.getElementById('gender'),
+            location: document.getElementById('location')
         };
 
         function populateUserTable(users) {
@@ -121,6 +126,7 @@
         function createFilterOptions() {
             const uniqueAges = [...new Set(userData.map(user => user.Age))];
             const uniqueGenders = [...new Set(userData.map(user => user.Gender))];
+            const uniqueLocation = [...new Set(userData.map(user => user.Location))];
 
             filters.age.innerHTML = '<option value="all">All</option>';
             uniqueAges.forEach(age => {
@@ -131,12 +137,18 @@
             uniqueGenders.forEach(gender => {
                 filters.gender.innerHTML += `<option value="${gender}">${gender}</option>`;
             });
+
+            filters.location.innerHTML = '<option value="all">All</option>';
+            uniqueLocation.forEach(location => {
+                filters.location.innerHTML += `<option value="${location}">${location}</option>`;
+            });
         }
 
         function applyFilters() {
             const filteredUsers = userData.filter(user => {
                 return (filters.age.value === 'all' || user.Age == filters.age.value) && 
-                       (filters.gender.value === 'all' || user.Gender == filters.gender.value); 
+                       (filters.gender.value === 'all' || user.Gender == filters.gender.value)&&
+                       (filters.location.value === 'all' || user.Location == filters.location.value); 
             });
             populateUserTable(filteredUsers);
         }
@@ -144,6 +156,7 @@
         // Event listeners to trigger filtering
         filters.age.addEventListener('change', applyFilters);
         filters.gender.addEventListener('change', applyFilters);
+        filters.location.addEventListener('change', applyFilters);
 
         // Initial setup
         createFilterOptions();
