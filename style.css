@@ -1,50 +1,38 @@
-*{
-    margin: 1px;
-    padding: 1px;
-}
-
-body {
-    font-family: Arial, Helvetica, sans-serif;
-    margin: 20px;
-}
-
-h1 {
+/* Profile Container */
+.profile-container {
+    width: 100%;
+    display: flex; 
     text-align: center;
-    margin-bottom: 20px; 
-}
-
-table {
-    border-collapse: collapse; 
-    width: 80%; /* Adjust the width as needed */
-    margin: 20px auto; /* Centers the table */
-}
-
-th, td {
-    border: 1px solid #ddddddd1;
-    padding: 10px;
-    text-align: left; 
-}
-
-th {
-    background-color: #f0f0f089; /* Light gray background for headers */
-}
-
-/* Optional: Striped table rows */
-tr:nth-child(even) {
-    background-color: #f8f8f8e4;
-}
-
-/* Styling for the filter area */
-#filters {
-    margin-bottom: 15px;
-    width: 50%;
-    padding: 5px;
-    margin: auto;
-    padding: auto;
-    flex: auto; 
-
-}
-
-#filters label {
-    margin-right: 5px;
-}
+    flex-wrap: wrap;  
+    font-size: large;          /* Enables flexbox for layout */
+    align-items: center;      /* Vertically centers items */
+    padding: 1rem;            /* 1rem = 16px padding on all sides */
+    border: 1px solid #e2e8f0; /* Light gray border */
+    border-radius: 0.375rem;   /* Medium rounded corners */
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06); /* Subtle shadow */
+  }
+  
+  /* Profile Image */
+  .profile-image {
+    width: 8rem;             /* 4rem = 64px */
+    height: 8rem;            /* 4rem = 64px */
+    border-radius: 20px;
+    margin-right: 1rem;      /* 1rem = 16px margin on the right */
+  }
+  
+  /* Profile Info */
+  .profile-info {
+    flex-grow: 1;            /* Allows the info to take up remaining space */
+  }
+  
+  /* Profile Details */
+  .profile-details {
+    padding: 20px;
+    margin-top: 0.5rem;       /* 0.5rem = 8px margin at the top */
+  }
+  
+  /* Hidden Element */
+  .hidden {
+    display: none;           /* Hides the element */
+  }
+  
