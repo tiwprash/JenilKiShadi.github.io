@@ -15,7 +15,7 @@ function populateUserTable(users) {
   
       // Image Element (Replace 'placeholder.jpg' with the actual image path or URL)
       const img = document.createElement('img');
-      img.src = `./${user.Name}.jpg`
+      img.src = `${user.Name}.jpg`
       img.alt = `${user.Name}'s Profile Picture`;
       img.classList.add('profile-image');
       profileContainer.appendChild(img);
